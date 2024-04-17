@@ -34,7 +34,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen p-4">
       <h1 className="text-2xl font-bold text-center mb-4 text-black">暗号化・復号化ツール</h1>
       <div className="mb-4">
         <input

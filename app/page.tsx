@@ -22,6 +22,17 @@ const Home: React.FC = () => {
     setResult(Cipher.decrypt(input));
   };
 
+  // クリップボードにコピーする
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('結果がクリップボードにコピーされました。'); // またはより洗練された通知方法を使用
+    } catch (err) {
+      console.error('クリップボードへのコピーに失敗しました: ', err);
+      alert('クリップボードへのコピーに失敗しました。');
+    }
+  };
+
   return (
     <div className="bg-white min-h-screen">
       <h1 className="text-2xl font-bold text-center mb-4 text-black">暗号化・復号化ツール</h1>
@@ -45,6 +56,12 @@ const Home: React.FC = () => {
       <div className="p-4 border rounded">
         <p>結果:</p>
         <p className="break-words text-black">{result}</p>
+        <button
+            onClick={() => copyToClipboard(result)}
+            className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
+          >
+            結果をコピー
+        </button>
       </div>
     </div>
   );
